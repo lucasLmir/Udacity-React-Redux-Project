@@ -1,8 +1,18 @@
+import { Route, Routes } from "react-router-dom";
+import { Fragment } from "react";
+import Nav from "./Nav";
+import Dashboard from "./Dashboard";
+
 function App() {
   return (
-    <div>
-      <h1>APP</h1>
-    </div>
+    <Fragment>
+      <div className="container">
+        <Nav />
+        <Routes>
+            <Route path="/" exact element={<Dashboard />} />
+          </Routes>
+      </div>
+    </Fragment>
   );
 }
 
