@@ -8,18 +8,23 @@ import { handleInitialData } from "../actions/shared";
 function App(props) {
   useEffect(() => {
     props.dispatch(handleInitialData());
-  }, [])
+  }, []);
 
   return (
     <Fragment>
       <div className="container">
         <Nav />
         <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-          </Routes>
+          <Route path="/" exact element={<Dashboard />} />
+        </Routes>
       </div>
     </Fragment>
   );
 }
+
+const mapStateToProps = ({ authedUser, users }) => ({
+  userLogged: authedUser === null,
+  loading: users === null,
+});
 
 export default connect()(App);
