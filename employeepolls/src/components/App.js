@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import LoadingBar from "react-redux-loading-bar";
 
 function App(props) {
   useEffect(() => {
@@ -12,6 +13,7 @@ function App(props) {
 
   return (
     <Fragment>
+      <LoadingBar />
       <div className="container">
         <Nav />
         <Routes>
@@ -27,4 +29,4 @@ const mapStateToProps = ({ authedUser, users }) => ({
   loading: users === null,
 });
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);
