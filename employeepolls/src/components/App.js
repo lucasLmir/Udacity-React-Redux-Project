@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading-bar";
+import NewQeustion from "./NewQuestion";
 
 function App(props) {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App(props) {
         <Nav />
         <Routes>
           <Route path="/" exact element={<Dashboard />} />
+          <Route path="new" element={<NewQeustion />} />
         </Routes>
       </div>
     </Fragment>

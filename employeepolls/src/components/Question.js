@@ -1,15 +1,26 @@
 import { connect } from "react-redux";
 import VotersAvatar from "./VotersAvatar";
+import { handleAnswerQuestion } from "../actions/questions";
 
 const Question = (props) => {
+  const { name, avatar, optionOne, optionTwo } = props.question;
+  const { id, authedUser, dispatch } = props;
+
   const handleVote = (e) => {
     e.preventDefault();
+
+    dispatch(
+      handleAnswerQuestion({
+        authedUser,
+        qid: id,
+        answer: e.target.value,
+      })
+    );
   };
+
   if (props.question === null) {
     return <p>Question not found</p>;
   }
-
-  const { name, avatar, optionOne, optionTwo } = props.question;
 
   const total = optionOne.votes.length + optionTwo.votes.length;
 
@@ -20,7 +31,12 @@ const Question = (props) => {
       <div>
         <div className="question-info">
           <p>Do you rather:</p>
-          <button className="btn" onClick={handleVote}>
+          <button
+            disabled={props.isAnswered}
+            value="optionOne"
+            className="btn"
+            onClick={handleVote}
+          >
             {optionOne.text}
           </button>
           <progress value={optionOne.votes.length} max={total}></progress>
@@ -28,7 +44,12 @@ const Question = (props) => {
         </div>
         <div className="question-info">
           <p>Or:</p>
-          <button className="btn" onClick={handleVote}>
+          <button
+            disabled={props.isAnswered}
+            value="optionTwo"
+            className="btn"
+            onClick={handleVote}
+          >
             {optionTwo.text}
           </button>
           <progress value={optionTwo.votes.length} max={total}></progress>

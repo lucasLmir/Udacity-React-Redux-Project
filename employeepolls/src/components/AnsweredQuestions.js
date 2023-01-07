@@ -8,7 +8,7 @@ const AnsweredQuestions = (props) => {
       <ul className="dashboard-list">
         {props.questionIds.map((id) => (
           <li key={id}>
-            <Question id={id} />
+            <Question isAnswered={true} id={id} />
           </li>
         ))}
       </ul>
