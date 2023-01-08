@@ -20,8 +20,14 @@ const LoginPage = (props) => {
       setMessage("Username or Password incorrect!");
     }
   };
+
+  const handleLogout = (e) => {
+    props.dispatch(setAuthedUser(null));
+  }
+
   return (
-    <div>
+      <div>
+        <button hidden={props.authedUser === null} onClick={handleLogout}>LogOut</button>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -30,6 +36,7 @@ const LoginPage = (props) => {
           name="Uname"
           id="Uname"
           placeholder="Username"
+          hidden={props.authedUser !== null}
         />
         <br />
         <input
@@ -39,18 +46,20 @@ const LoginPage = (props) => {
           name="Pass"
           id="Pass"
           placeholder="Password"
+          hidden={props.authedUser !== null}
         />
         <br />
-        <button>Login</button>
+        <button hidden={props.authedUser !== null}>LogIn</button>
       </form>
       <p>{message}</p>
     </div>
   );
 };
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ authedUser, users }) => {
   return {
     users,
+    authedUser,
   };
 };
 export default connect(mapStateToProps)(LoginPage);

@@ -16,8 +16,6 @@ const withRouter = (Componet) => {
   return ComponentWithRouterProp;
 };
 
-
-
 const Question = (props) => {
   //const { name, avatar, optionOne, optionTwo } = props.question;
   const { authedUser, dispatch } = props;
