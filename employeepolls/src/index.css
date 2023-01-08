@@ -26,12 +26,23 @@ a {
   border-radius: 15px;
 }
 
+.btn-vote {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  position: relative;
+  border-radius: 15px;
+  width: 150px;
+}
+
 .btn:hover {
   border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
 
-.btn-one:hover {
+.btn-vote:hover {
   border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
@@ -41,6 +52,15 @@ a {
   font-weight: 700;
   border-width: 2px;
 }
+
+.left {
+  float: left;
+}
+
+.right{
+  float: right;
+  text-align: right;
+  width: 65%; }
 
 .center {
   text-align: center;
@@ -77,10 +97,26 @@ li {
   margin: 10px;
 }
 
+.big-avatar {
+  height: 100px;
+  border-radius: 50px;
+  margin: 10px;
+}
+
 .small-avatar {
   height: 40px;
   border-radius: 20px;
   float: left;
+}
+
+.question-page {
+  width: 100%;
+  max-width: 590px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .question {

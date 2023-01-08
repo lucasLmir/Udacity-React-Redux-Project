@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import VotersAvatar from "./VotersAvatar";
 import { handleAnswerQuestion } from "../actions/questions";
+import { Link } from "react-router-dom";
 
 const Question = (props) => {
   const { name, avatar, optionOne, optionTwo } = props.question;
@@ -25,38 +26,28 @@ const Question = (props) => {
   const total = optionOne.votes.length + optionTwo.votes.length;
 
   return (
-    <div className="question">
+    <Link to={`/question/${id}`} className="question">
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <p>{name}</p>
       <div>
         <div className="question-info">
           <p>Do you rather:</p>
-          <button
-            disabled={props.isAnswered}
-            value="optionOne"
-            className="btn"
-            onClick={handleVote}
-          >
-            {optionOne.text}
-          </button>
-          <progress value={optionOne.votes.length} max={total}></progress>
-          <VotersAvatar voters={optionOne.votes} />
+          <span>{optionOne.text}</span>
+          <div hidden={!props.isAnswered}>
+            <progress value={optionOne.votes.length} max={total}></progress>
+            <VotersAvatar voters={optionOne.votes} />
+          </div>
         </div>
         <div className="question-info">
           <p>Or:</p>
-          <button
-            disabled={props.isAnswered}
-            value="optionTwo"
-            className="btn"
-            onClick={handleVote}
-          >
-            {optionTwo.text}
-          </button>
-          <progress value={optionTwo.votes.length} max={total}></progress>
-          <VotersAvatar voters={optionTwo.votes} />
+          <span>{optionTwo.text}</span>
+          <div hidden={!props.isAnswered}>
+            <progress value={optionTwo.votes.length} max={total}></progress>
+            <VotersAvatar voters={optionTwo.votes} />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

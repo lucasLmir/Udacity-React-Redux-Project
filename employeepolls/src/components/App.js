@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading-bar";
 import NewQeustion from "./NewQuestion";
+import QuestionPage from "./QuestionPage";
+import LoginPage from "./LoginPage";
 
 function App(props) {
   useEffect(() => {
@@ -15,19 +17,23 @@ function App(props) {
   return (
     <Fragment>
       <LoadingBar />
-      <div className="container">
-        <Nav />
-        <Routes>
-          <Route path="/" exact element={<Dashboard />} />
-          <Route path="new" element={<NewQeustion />} />
-        </Routes>
-      </div>
+      {props.loading === true ? null : (
+        <div className="container">
+          <Nav />
+          <Routes>
+            <Route path="/" exact element={<Dashboard />} />
+            <Route path="/new" element={<NewQeustion />} />
+            <Route path="/question/:id" element={<QuestionPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </div>
+      )}
     </Fragment>
   );
 }
 
 const mapStateToProps = ({ authedUser, users }) => ({
-  userLogged: authedUser === null,
+  userLogged: !authedUser === null,
   loading: users === null,
 });
 

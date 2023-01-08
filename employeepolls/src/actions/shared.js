@@ -4,7 +4,7 @@ import { receiveUsers } from "./users";
 import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-const AUTHED_ID = "tylermcginnis" // implementar o sistema de login
+const AUTHED_ID = null
 
 export function handleInitialData() {
   return (dispatch) => {

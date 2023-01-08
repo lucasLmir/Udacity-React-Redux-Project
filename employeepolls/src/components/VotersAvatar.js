@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 const VotersAvatar = (props) => {
   return (
     <div>
-      {props.voters.map((v) => (
+      {props.voters?.map((v) => (
         <img
           key={v}
           alt={`avatar of ${props.users[v].name}`}
