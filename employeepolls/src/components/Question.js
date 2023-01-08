@@ -1,23 +1,10 @@
 import { connect } from "react-redux";
 import VotersAvatar from "./VotersAvatar";
-import { handleAnswerQuestion } from "../actions/questions";
 import { Link } from "react-router-dom";
 
 const Question = (props) => {
   const { name, avatar, optionOne, optionTwo } = props.question;
-  const { id, authedUser, dispatch } = props;
-
-  const handleVote = (e) => {
-    e.preventDefault();
-
-    dispatch(
-      handleAnswerQuestion({
-        authedUser,
-        qid: id,
-        answer: e.target.value,
-      })
-    );
-  };
+  const { id } = props;
 
   if (props.question === null) {
     return <p>Question not found</p>;
@@ -31,7 +18,7 @@ const Question = (props) => {
       <p>{name}</p>
       <div>
         <div className="question-info">
-          <p>Do you rather:</p>
+          <p>Would you rather:</p>
           <span>{optionOne.text}</span>
           <div hidden={!props.isAnswered}>
             <progress value={optionOne.votes.length} max={total}></progress>

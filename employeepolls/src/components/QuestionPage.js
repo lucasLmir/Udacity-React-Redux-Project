@@ -22,7 +22,7 @@ const Question = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (props.authedUser === null) {
+    if (authedUser === null) {
       navigate("/login");
     }
   }, []);

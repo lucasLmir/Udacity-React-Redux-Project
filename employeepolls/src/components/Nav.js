@@ -11,9 +11,12 @@ const Nav = (props) => (
       <li>
         <Link to="/new">Ask a Question</Link>
       </li>
+      <li>
+        <Link to="/leaderboard">Leader Board</Link>
+      </li>
       <li className="right">
         <Link to="/login">
-          <span>{props.name}</span>
+          <span>{props.name === undefined ? "Login" : props.name}</span>
         </Link>
       </li>
       <li>
@@ -34,7 +37,6 @@ const Nav = (props) => (
 const mapStateToProps = ({ authedUser, users }) => {
   const avatar = users[authedUser]?.avatarURL;
   const name = users[authedUser]?.name;
-  const userLogged = authedUser === null;
 
   return {
     name,

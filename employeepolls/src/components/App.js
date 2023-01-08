@@ -8,6 +8,8 @@ import LoadingBar from "react-redux-loading-bar";
 import NewQeustion from "./NewQuestion";
 import QuestionPage from "./QuestionPage";
 import LoginPage from "./LoginPage";
+import LeaderBoard from "./LeaderBoard";
+import NotFound from "./NotFound";
 
 function App(props) {
   useEffect(() => {
@@ -25,6 +27,8 @@ function App(props) {
             <Route path="/new" element={<NewQeustion />} />
             <Route path="/question/:id" element={<QuestionPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path='*' element={<NotFound />} />
+            <Route path="/leaderboard" element={<LeaderBoard />} />
           </Routes>
         </div>
       )}
