@@ -10,6 +10,7 @@ import QuestionPage from "./QuestionPage";
 import LoginPage from "./LoginPage";
 import LeaderBoard from "./LeaderBoard";
 import NotFound from "./NotFound";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function App(props) {
   useEffect(() => {
@@ -23,12 +24,14 @@ function App(props) {
         <div className="container">
           <Nav />
           <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/new" element={<NewQeustion />} />
-            <Route path="/question/:id" element={<QuestionPage />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" exact element={<Dashboard />} />
+              <Route path="/new" element={<NewQeustion />} />
+              <Route path="/question/:id" element={<QuestionPage />} />
+              <Route path="/leaderboard" element={<LeaderBoard />} />
+            </Route>
             <Route path="/login" element={<LoginPage />} />
-            <Route path='*' element={<NotFound />} />
-            <Route path="/leaderboard" element={<LeaderBoard />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       )}
@@ -36,8 +39,7 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ authedUser, users }) => ({
-  userLogged: !authedUser === null,
+const mapStateToProps = ({ users }) => ({
   loading: users === null,
 });
 

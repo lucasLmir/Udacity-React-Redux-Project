@@ -1,14 +1,6 @@
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const LeaderBoard = (props) => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (props.authedUser === null) {
-      navigate("/login");
-    }
-  }, []);
   return (
     <div>
       <h1>Leader Board</h1>
@@ -28,21 +20,19 @@ const LeaderBoard = (props) => {
               <td>{u.questions.length}</td>
             </tr>
           ))}
-          ;
         </tbody>
       </table>
     </div>
   );
 };
 
-const mapStateToProps = ({ users, authedUser }) => ({
+const mapStateToProps = ({ users }) => ({
   users: Object.values(users).sort(
     (a, b) =>
       Object.keys(b.answers).length +
       Object.keys(b.questions).length -
       (Object.keys(a.answers).length + Object.keys(a.questions).length)
   ),
-  authedUser,
 });
 
 export default connect(mapStateToProps)(LeaderBoard);

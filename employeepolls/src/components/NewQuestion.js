@@ -2,18 +2,11 @@ import { useState } from "react";
 import { handleAddQuestion } from "../actions/questions";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
-const NewQeustion = ({ authedUser, dispatch, id }) => {
+const NewQeustion = ({ dispatch }) => {
   const navigate = useNavigate();
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
-
-  useEffect(() => {
-    if (authedUser === null) {
-      navigate("/login");
-    }
-  }, []);
 
   const handleChangeOne = (e) => {
     const text = e.target.value;
@@ -60,8 +53,4 @@ const NewQeustion = ({ authedUser, dispatch, id }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser}) => ({
-  authedUser,
-});
-
-export default connect(mapStateToProps)(NewQeustion);
+export default connect()(NewQeustion);
