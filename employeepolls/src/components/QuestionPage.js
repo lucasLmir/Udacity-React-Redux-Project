@@ -46,9 +46,11 @@ const Question = (props) => {
           />
           <h3>{props.author}</h3>
 
-          <Link to={"/"}>
-            <h5>Poll answered, click here to go back</h5>
-          </Link>
+          {props.isAnswered && (
+            <Link to={"/"}>
+              <h5>Poll answered, click here to go back</h5>
+            </Link>
+          )}
           <h4>Would You Rather</h4>
           <div className="question">
             <div className="question-info">
