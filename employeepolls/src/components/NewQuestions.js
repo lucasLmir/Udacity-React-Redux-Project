@@ -5,14 +5,12 @@ import { Link } from "react-router-dom";
 const NewQuestions = (props) => {
   return (
     <div>
-      {props.questionIds.length === 0 ? (
+      {props.questionIds.length === 0 && (
         <Link to={"/new"}>
           <span>
             All polls have been voted! Click here to ask a new question.
           </span>
         </Link>
-      ) : (
-        <h3>New Qusetions</h3>
       )}
       <ul className="dashboard-list">
         {props.questionIds.map((id) => (

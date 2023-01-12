@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 const AnsweredQuestions = (props) => {
   return (
     <div>
-      <h3>Answered Questions</h3>
       <ul className="dashboard-list">
         {props.questionIds.map((id) => (
           <li key={id}>
