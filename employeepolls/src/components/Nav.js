@@ -9,7 +9,7 @@ const Nav = (props) => (
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/new">Ask a Question</Link>
+        <Link to="/add">Ask a Question</Link>
       </li>
       <li>
         <Link to="/leaderboard">Leader Board</Link>

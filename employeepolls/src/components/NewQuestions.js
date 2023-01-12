@@ -6,7 +6,7 @@ const NewQuestions = (props) => {
   return (
     <div>
       {props.questionIds.length === 0 && (
-        <Link to={"/new"}>
+        <Link to={"/add"}>
           <span>
             All polls have been voted! Click here to ask a new question.
           </span>

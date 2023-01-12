@@ -26,7 +26,7 @@ function App(props) {
           <Routes>
             <Route element={<ProtectedRoutes />}>
               <Route path="/" exact element={<Dashboard />} />
-              <Route path="/new" element={<NewQeustion />} />
+              <Route path="/add" element={<NewQeustion />} />
               <Route path="/question/:id" element={<QuestionPage />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
               <Route path="*" element={<NotFound />} />
