@@ -23,13 +23,20 @@ const LoginPage = (props) => {
 
   const handleLogout = (e) => {
     props.dispatch(setAuthedUser(null));
-  }
+  };
 
   return (
-      <div>
-        <button hidden={props.authedUser === null} onClick={handleLogout}>LogOut</button>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <button
+        data-testid="logout-btn"
+        hidden={props.authedUser === null}
+        onClick={handleLogout}
+      >
+        LogOut
+      </button>
+      <form onSubmit={handleSubmit} data-testid="login-form">
         <input
+          data-testid="uname-input"
           type="text"
           value={uname}
           onChange={(e) => setUname(e.target.value)}
@@ -40,6 +47,7 @@ const LoginPage = (props) => {
         />
         <br />
         <input
+          data-testid="pass-input"
           type="Password"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
@@ -49,9 +57,9 @@ const LoginPage = (props) => {
           hidden={props.authedUser !== null}
         />
         <br />
-        <button hidden={props.authedUser !== null}>LogIn</button>
+        <button data-testid="submit-btn" hidden={props.authedUser !== null}>LogIn</button>
       </form>
-      <p>{message}</p>
+      <p data-testid="message">{message}</p>
     </div>
   );
 };

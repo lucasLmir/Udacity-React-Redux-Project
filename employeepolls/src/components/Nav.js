@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Nav = (props) => (
-  
   <nav className="nav">
     <ul>
       <li>
@@ -16,23 +15,25 @@ const Nav = (props) => (
       </li>
       <li className="right">
         <Link to="/login">
-          <span>{props.name === undefined ? "Login" : props.name}</span>
+          <span data-testid="userName">
+            {props.name === undefined ? "Login" : props.name}
+          </span>
         </Link>
       </li>
       <li>
         <Link to="/login">
-        <img hidden={props.name === undefined}
-          alt={`avatar of ${props.name}`}
-          src={props.avatar}
-          className="small-avatar"
+          <img
+            data-testid="avatarImg"
+            hidden={props.name === undefined}
+            alt={`avatar of ${props.name}`}
+            src={props.avatar}
+            className="small-avatar"
           />
         </Link>
-
       </li>
     </ul>
   </nav>
-  );
-
+);
 
 const mapStateToProps = ({ authedUser, users }) => {
   const avatar = users[authedUser]?.avatarURL;

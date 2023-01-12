@@ -13,7 +13,7 @@ const Question = (props) => {
   const total = optionOne.votes.length + optionTwo.votes.length;
 
   return (
-    <Link to={`/question/${id}`} className="question">
+    <Link to={`/question/${id}`} className="question" data-testid="question" >
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <p>{name}</p>
       <div>

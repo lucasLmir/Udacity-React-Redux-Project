@@ -32,6 +32,7 @@ const NewQeustion = ({ dispatch }) => {
       <h1>New Question</h1>
       <form className="new-question" onSubmit={handleSubmit}>
         <textarea
+          data-testid="optionOneTextArea"
           placeholder="Option one"
           value={optionOne}
           onChange={handleChangeOne}
@@ -39,13 +40,14 @@ const NewQeustion = ({ dispatch }) => {
           maxLength={100}
         />
         <textarea
+          data-testid="optionTwoTextArea"
           placeholder="Option two"
           value={optionTwo}
           onChange={handleChangeTwo}
           className="textarea"
           maxLength={100}
         />
-        <button className="btn" disabled={optionOne === "" || optionTwo === ""}>
+        <button data-testid="btn-submit" className="btn" disabled={optionOne === "" || optionTwo === ""}>
           SUBMIT
         </button>
       </form>
