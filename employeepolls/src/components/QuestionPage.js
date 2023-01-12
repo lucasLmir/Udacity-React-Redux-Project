@@ -17,14 +17,15 @@ const withRouter = (Componet) => {
 };
 
 const Question = (props) => {
+  console.log(props.chosenOption);
   const { dispatch } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (props.question === undefined) {
-      navigate("/404")
+      navigate("/404");
     }
-  }, [])
+  }, []);
 
   const handleVote = (e) => {
     e.preventDefault();
@@ -55,17 +56,31 @@ const Question = (props) => {
             </Link>
           )}
           <h4>Would You Rather</h4>
-          <div className="question">
+          <div
+            className={
+              props.chosenOption === "optionOne"
+                ? "question chosen"
+                : "question"
+            }
+          >
             <div className="question-info">
               <div className="question-info">
                 <p>{props?.question?.optionOne.text}</p>
               </div>
               <div hidden={!props.isAnswered}>
+                <span>
+                  {(
+                    (props?.question?.optionOne.votes.length * 100) /
+                    props.totalVotes
+                  ).toFixed(2)}
+                  %
+                </span>
                 <progress
                   className="left"
                   value={props?.question?.optionOne.votes.length}
                   max={props.totalVotes}
                 ></progress>
+                <span>{props?.question?.optionOne.votes.length} vote(s)</span>
                 <VotersAvatar voters={props?.question?.optionOne.votes} />
               </div>
               <button
@@ -81,17 +96,31 @@ const Question = (props) => {
 
           <h4>Or</h4>
 
-          <div className="question">
+          <div
+            className={
+              props.chosenOption === "optionTwo"
+                ? "question chosen"
+                : "question"
+            }
+          >
             <div className="question-info">
               <div className="question-info">
                 <p>{props?.question?.optionTwo.text}</p>
               </div>
               <div hidden={!props.isAnswered}>
+                <span>
+                  {(
+                    (props?.question?.optionTwo.votes.length * 100) /
+                    props.totalVotes
+                  ).toFixed(2)}
+                  %
+                </span>
                 <progress
                   className="left"
                   value={props?.question?.optionTwo.votes.length}
                   max={props.totalVotes}
                 ></progress>
+                <span>{props?.question?.optionTwo.votes.length} vote(s)</span>
                 <VotersAvatar voters={props?.question?.optionTwo.votes} />
               </div>
               <button
@@ -122,6 +151,12 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
     question?.optionOne.votes.includes(authedUser) ||
     question?.optionTwo.votes.includes(authedUser);
 
+  const chosenOption = !isAnswered
+    ? null
+    : question?.optionOne.votes.includes(authedUser)
+    ? "optionOne"
+    : "optionTwo";
+
   return {
     id,
     users,
@@ -130,6 +165,7 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
     authedUser,
     question,
     isAnswered,
+    chosenOption,
     totalVotes,
     loading: authedUser === null,
   };

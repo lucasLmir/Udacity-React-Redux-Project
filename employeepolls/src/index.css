@@ -61,6 +61,10 @@ a {
   width: 100%;
 }
 
+.chosen {
+  background-color: #c3ffb8;
+}
+
 .center {
   text-align: center;
 }
