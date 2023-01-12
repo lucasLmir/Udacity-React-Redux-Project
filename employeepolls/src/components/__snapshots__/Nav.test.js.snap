@@ -18,7 +18,7 @@ Object {
           </li>
           <li>
             <a
-              href="/new"
+              href="/add"
             >
               Ask a Question
             </a>
@@ -31,8 +31,17 @@ Object {
             </a>
           </li>
           <li
-            class="right"
-          >
+            class="mid-li"
+          />
+          <li>
+            <a
+              hidden=""
+              href="/"
+            >
+              LogOut
+            </a>
+          </li>
+          <li>
             <a
               href="/login"
             >
@@ -73,7 +82,7 @@ Object {
         </li>
         <li>
           <a
-            href="/new"
+            href="/add"
           >
             Ask a Question
           </a>
@@ -86,8 +95,17 @@ Object {
           </a>
         </li>
         <li
-          class="right"
-        >
+          class="mid-li"
+        />
+        <li>
+          <a
+            hidden=""
+            href="/"
+          >
+            LogOut
+          </a>
+        </li>
+        <li>
           <a
             href="/login"
           >
