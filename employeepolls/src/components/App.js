@@ -29,9 +29,9 @@ function App(props) {
               <Route path="/new" element={<NewQeustion />} />
               <Route path="/question/:id" element={<QuestionPage />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       )}

@@ -3,6 +3,7 @@ import VotersAvatar from "./VotersAvatar";
 import { handleAnswerQuestion } from "../actions/questions";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const withRouter = (Componet) => {
   const ComponentWithRouterProp = (props) => {
@@ -16,8 +17,14 @@ const withRouter = (Componet) => {
 };
 
 const Question = (props) => {
-  //const { name, avatar, optionOne, optionTwo } = props.question;
   const { dispatch } = props;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (props.question === undefined) {
+      navigate("/404")
+    }
+  }, [])
 
   const handleVote = (e) => {
     e.preventDefault();
@@ -30,10 +37,6 @@ const Question = (props) => {
       })
     );
   };
-
-  if (props.question === null) {
-    return <p>Question not found</p>;
-  }
 
   return (
     <div className="center">

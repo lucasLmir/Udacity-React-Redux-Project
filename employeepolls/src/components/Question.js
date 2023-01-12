@@ -6,9 +6,9 @@ const Question = (props) => {
   const { name, avatar, optionOne, optionTwo } = props.question;
   const { id } = props;
 
-  if (props.question === null) {
-    return <p>Question not found</p>;
-  }
+  // if (props.question === null) {
+  //   return <p>Question not found</p>;
+  // }
 
   const total = optionOne.votes.length + optionTwo.votes.length;
 

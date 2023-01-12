@@ -7,7 +7,7 @@ const LoginPage = (props) => {
   const [uname, setUname] = useState("");
   const [pass, setPass] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const LoginPage = (props) => {
 
     if (match) {
       props.dispatch(setAuthedUser(uname));
-      navigate("/");
+      //navigate("/");
     } else {
       setMessage("Username or Password incorrect!");
     }
