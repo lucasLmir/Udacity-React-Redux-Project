@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { setAuthedUser } from "../actions/authedUser";
 
 const Nav = (props) => (
   <nav className="nav">
@@ -13,7 +14,16 @@ const Nav = (props) => (
       <li>
         <Link to="/leaderboard">Leader Board</Link>
       </li>
-      <li className="right">
+      <li className="mid-li"></li>
+      <li>
+        <Link
+          hidden={props.name === undefined}
+          onClick={(e) => props.dispatch(setAuthedUser(null))}
+        >
+          LogOut
+        </Link>
+      </li>
+      <li>
         <Link to="/login">
           <span data-testid="userName">
             {props.name === undefined ? "Login" : props.name}

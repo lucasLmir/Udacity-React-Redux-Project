@@ -57,10 +57,9 @@ a {
   float: left;
 }
 
-.right{
-  float: right;
-  text-align: right;
-  width: 50%; }
+.mid-li{
+  width: 100%;
+}
 
 .center {
   text-align: center;
